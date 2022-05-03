@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infnetdomilhao/pages/jogo.dart';
 import './pages/pergunta.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget{
             title: const Text('Infnet do Milhao'),
             backgroundColor: Colors.blue ,
           ),
-          body: Pergunta(),
+          body: const Jogo(),
         )
     );
   }

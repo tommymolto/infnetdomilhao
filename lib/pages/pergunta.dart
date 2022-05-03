@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:infnetdomilhao/pages/resposta.dart';
 
 class Pergunta extends StatelessWidget {
-  const Pergunta({Key? key}) : super(key: key);
+  final String pergunta;
+  final List<String> respostas;
+  final Function onClick;
+  const Pergunta({Key? key, required this.respostas, required this.pergunta, required this.onClick}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var respostas = [
-      'RIO DE JANEIRO',
-      'RIO GRANDE DO SUL',
-      'SANTA CATARINA',
-      'GOIÁS',
-    ];
+
     respostas.shuffle();
     const indice = 0;
     return Center(
@@ -22,18 +20,18 @@ class Pergunta extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Expanded(
+               Expanded(
                 flex: 3,
                 child: Text(
-                    'Em que estado brasileiro nasceu a apresentadora Xuxa ? '),
+                    pergunta),
               ),
               Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Resposta(textoResposta: respostas[0].toString(), iconData: Icons.circle, function: _onClicked),
-                      Resposta(textoResposta: respostas[1].toString(), iconData: Icons.square, function: _onClicked),
+                      Resposta(textoResposta: respostas[0].toString(), iconData: Icons.circle, function: onClick),
+                      Resposta(textoResposta: respostas[1].toString(), iconData: Icons.square, function: onClick),
                     ],
                   )),
               Expanded(
@@ -42,8 +40,8 @@ class Pergunta extends StatelessWidget {
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Resposta(textoResposta: respostas[2].toString(), iconData: Icons.star, function: _onClicked),
-                    Resposta(textoResposta: respostas[3].toString(), iconData: Icons.add, function: _onClicked),
+                    Resposta(textoResposta: respostas[2].toString(), iconData: Icons.star, function: onClick),
+                    Resposta(textoResposta: respostas[3].toString(), iconData: Icons.add, function: onClick),
 
                   ],
                 )),
@@ -53,8 +51,5 @@ class Pergunta extends StatelessWidget {
     );
   }
 
-  _onClicked(String valor) {
-    print(valor);
-    //stdout.writeln(valor);
-  }
+
 }
