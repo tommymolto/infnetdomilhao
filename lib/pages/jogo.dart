@@ -17,6 +17,7 @@ class Jogo extends StatefulWidget {
 }
 
 class _JogoState extends State<Jogo> {
+  var total = 0;
   late List<String> escolhas = [];
   late String pergunta;
   var perguntas = [
@@ -27,7 +28,8 @@ class _JogoState extends State<Jogo> {
         'RIO GRANDE DO SUL',
         'SANTA CATARINA',
         'GOIÁS',
-      ]
+      ],
+      'certa':'RIO GRANDE DO SUL'
     },
     {
       'pergunta': 'Qual é o nome dado ao estado da água em forma de gelo?',
@@ -36,7 +38,8 @@ class _JogoState extends State<Jogo> {
         'Solido',
         'Gasoso',
         'Vaporoso',
-      ]
+      ],
+      'certa':'Solido'
     }, {
       'pergunta': 'Qual era o apelido da cantora Elis Regina?',
       'respostas': [
@@ -44,7 +47,8 @@ class _JogoState extends State<Jogo> {
         'PAULISTINHA',
         'PIMENTINHA',
         'ANDORINHA',
-      ]
+      ],
+      'certa': 'PIMENTINHA'
     },
     {
 
@@ -58,7 +62,7 @@ class _JogoState extends State<Jogo> {
 
     }
   ];
-  var indice = 0;
+  var indicePergunta = 0;
 
   @override
   void initState() {}
@@ -67,19 +71,30 @@ class _JogoState extends State<Jogo> {
   Widget build(BuildContext context) {
     //respostas.shuffle();
 
-    return Pergunta(
-      pergunta: perguntas[indice]!['pergunta'] as String,
-      respostas: perguntas[indice]['respostas'] as List<String>,
-      onClick: _onClicked,
+    return indicePergunta < perguntas.length ? Column(
+      children: [
+        Expanded(child: Text('Total de Pontos: $total'), flex:1),
+        Expanded(child: Pergunta(
+          pergunta: perguntas[indicePergunta]!['pergunta'] as String,
+          respostas: perguntas[indicePergunta]['respostas'] as List<String>,
+          indice: indicePergunta,
+          onClick: _onClicked,
+        ), flex: 5,)
+        ,
+      ],
+    ) : Center(
+        child: SizedBox(
+          child: Text('Fim! Você ganhou $total pontos'),
+        ),
     );
   }
 
-  _onClicked(String valor) {
+  _onClicked(String valor, int indice) {
     setState(() {
+      if(valor == perguntas[indice]['certa']) total++;
       escolhas.add(valor);
-      indice++;
-      print(indice);
-      print(escolhas);
+      indicePergunta++;
+
     });
     escolhas.add(valor);
     print(valor);
