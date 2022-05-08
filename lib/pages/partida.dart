@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:infnetdomilhao/models/pergunta.dart';
+import 'package:infnetdomilhao/pages/partida_controller.dart';
 import 'package:infnetdomilhao/pages/pergunta.dart';
+import 'package:provider/provider.dart';
 
 class Partida extends StatefulWidget {
   const Partida({Key? key}) : super(key: key);
@@ -17,29 +19,22 @@ class _PartidaState extends State<Partida> {
   var totalPontos = 0;
   late List<String> escolhas = [];
   late String pergunta;
-  late int indicePergunta = 0;
   late List<PerguntaModel> perguntas = [];
 
-  Future<List<PerguntaModel>> _loadJsonData() async {
-    var jsonText = await rootBundle.loadString('assets/perguntas.json');
-    Iterable l = json.decode(jsonText);
 
-
-    return List<PerguntaModel>.from(l.map((model)=> PerguntaModel.fromJson(model)));
-
-  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _loadJsonData().then((data) => setState((){
-      perguntas = data;
-    }));
-    indicePergunta = 0;
+    Provider.of<PartidaController>(context, listen: false).getPerguntas();
+
   }
 
   @override
   Widget build(BuildContext context) {
+    final ctl  = context.watch<PartidaController>();
+
+    final _indicePergunta = context.watch<PartidaController>().indicePergunta;
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
@@ -51,7 +46,7 @@ class _PartidaState extends State<Partida> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                'Pontos: $totalPontos',
+                'Pontos: ${ context.watch<PartidaController>().totalPontos}',
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -61,10 +56,10 @@ class _PartidaState extends State<Partida> {
             ),
             flex: 1),
         Expanded(
-            child: indicePergunta < perguntas.length ? Pergunta(
-              pergunta: perguntas[indicePergunta].pergunta ,
-              respostas: perguntas[indicePergunta].respostas ,
-              indice: indicePergunta,
+            child: _indicePergunta < ctl.perguntas.length ? Pergunta(
+              pergunta: ctl.perguntas[_indicePergunta].pergunta ,
+              respostas: ctl.perguntas[_indicePergunta].respostas ,
+              indice: ctl.indicePergunta,
               onClick: _onClicked,
             ) :  Center(
                 child: Column(
@@ -89,17 +84,21 @@ class _PartidaState extends State<Partida> {
   }
   _resetGame(){
     setState(() {
-      totalPontos=0;
-      escolhas.clear();
-      indicePergunta = 0;
+      Provider.of<PartidaController>(context, listen: false).totalPontos=0;
+      Provider.of<PartidaController>(context, listen: false).escolhas.clear();
+      Provider.of<PartidaController>(context, listen: false).indicePergunta = 0;
     });
 
   }
   _onClicked(String valor, int indice) {
     setState(() {
-      if (valor == perguntas[indice].certa) totalPontos++;
-      escolhas.add(valor);
-      indicePergunta++;
+      if (valor == Provider.of<PartidaController>(context, listen: false).perguntas[indice].certa) {
+        Provider.of<PartidaController>(context, listen: false).totalPontos++;
+      }
+        Provider.of<PartidaController>(context, listen: false).escolhas.add(valor);
+        Provider.of<PartidaController>(context, listen: false).indicePergunta++;
+        print(Provider.of<PartidaController>(context, listen: false).indicePergunta);
+
     });
 
     print(valor);
