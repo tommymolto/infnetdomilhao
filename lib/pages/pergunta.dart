@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:infnetdomilhao/models/resposta_model.dart';
 import 'package:infnetdomilhao/pages/resposta.dart';
 
 class Pergunta extends StatelessWidget {
   final String pergunta;
-  final List<String> respostas;
+  final List<RespostaModel> respostas;
   final int indice;
   final Function onClick;
 
@@ -48,18 +49,22 @@ class Pergunta extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Resposta(
-                        textoResposta: respostas[0].toString(),
+                        textoResposta: respostas[0].resposta.toString(),
                         iconData: Icons.circle,
+                        respostaModel: respostas[0],
+
                         function: onClick,
                         indice: indice,
-                        cor: Colors.cyanAccent,
+                        cor: respostas[0].enabled == false ? Colors.grey: Colors.red ,
                       ),
                       Resposta(
-                        textoResposta: respostas[1].toString(),
+                        textoResposta: respostas[1].resposta.toString(),
+                        respostaModel: respostas[1],
+
                         iconData: Icons.square,
                         function: onClick,
                         indice: indice,
-                        cor: Colors.yellow,
+                        cor: respostas[1].enabled == false ? Colors.grey: Colors.yellow ,
                       ),
                     ],
                   )),
@@ -70,18 +75,21 @@ class Pergunta extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Resposta(
-                      textoResposta: respostas[2].toString(),
+                      textoResposta: respostas[2].resposta.toString(),
                       iconData: Icons.star,
                       function: onClick,
                       indice: indice,
-                      cor: Colors.deepOrange,
+                      cor: respostas[2].enabled == false ? Colors.grey: Colors.orange ,
+                      respostaModel: respostas[2],
                     ),
                     Resposta(
-                      textoResposta: respostas[3].toString(),
+                      textoResposta: respostas[3].resposta.toString(),
                       iconData: Icons.add,
                       function: onClick,
                       indice: indice,
-                      cor: Colors.lightGreenAccent
+                      cor: respostas[1].enabled == false ? Colors.grey: Colors.green ,
+                      respostaModel: respostas[3],
+
                     ),
                   ],
                 )),

@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:infnetdomilhao/models/resposta_model.dart';
 
 class PerguntaModel extends Equatable {
   final String tipo;
   final String pergunta;
-  final List<String> respostas;
+  final List<RespostaModel> respostas;
   final String certa;
 
   const PerguntaModel({
@@ -21,7 +22,7 @@ class PerguntaModel extends Equatable {
     return {
       'tipo': tipo,
       'pergunta': pergunta,
-      'respostas': List<dynamic>.from(respostas.map((x) => x)),
+      'respostas': List<dynamic>.from(respostas.map((x) => RespostaModel(resposta: x.toString()))),
       'certa': certa,
     };
   }
@@ -33,7 +34,7 @@ class PerguntaModel extends Equatable {
     return PerguntaModel(
       tipo: json['tipo'] as String,
       pergunta: json['pergunta'] as String,
-      respostas: List<String>.from(json["respostas"].map((x) => x)),
+      respostas: List<RespostaModel>.from(json["respostas"].map((x) => RespostaModel(resposta: x))),
       certa: json['certa'] as String,
     );
   }
