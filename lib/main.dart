@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infnetdomilhao/pages/home.dart';
 import 'package:infnetdomilhao/pages/jogo.dart';
 import './pages/pergunta.dart';
 
@@ -10,17 +11,7 @@ class HomePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return    MaterialApp(
-        //darkTheme: ThemeData.dark(),
-        color: Colors.amberAccent,
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Infnet do Milhao'),
-            backgroundColor: Colors.blue ,
-          ),
-          body: const Jogo(),
-        )
-    );
+    return const Home();
   }
 
 }
