@@ -9,6 +9,7 @@ import 'package:infnetdomilhao/pages/pergunta.dart';
 import 'package:provider/provider.dart';
 
 import '../models/resposta_model.dart';
+import 'modal_publico.dart';
 
 class Partida extends StatefulWidget {
   const Partida({Key? key}) : super(key: key);
@@ -49,6 +50,7 @@ class _PartidaState extends State<Partida> {
               padding: const EdgeInsets.all(5.0),
               child: Row(
                 children: [
+                  const SizedBox(width: 5),
                   Text(
                     'Pontos: ${ context.watch<PartidaController>().totalPontos}',
                     style: const TextStyle(
@@ -57,18 +59,35 @@ class _PartidaState extends State<Partida> {
                       color: Colors.blue,
                     ),
                   ),
+                  const SizedBox(width: 5),
+
                   ElevatedButton(onPressed: () {
                     setState(() {
                       Provider.of<PartidaController>(context, listen: false).usarAjudaMeioAMeio();
 
                     });
                     } , child: const Text('50%/50%')),
-                  ElevatedButton(onPressed: null, child: const Text('Amigo')),
-                  ElevatedButton(onPressed: null, child: const Text('Publico')),
+                  const SizedBox(width: 5),
+
+                  ElevatedButton(onPressed: () {
+                    _mostrarAjudaAmigo(ctl.perguntas[
+                    ctl.indicePergunta
+                    ]);
+                  }, child: const Text('Amigo')),
+                  const SizedBox(width: 5),
+
+                  ElevatedButton(onPressed: () {
+                    print('indice=${ctl.indicePergunta}');
+                    _mostrarAjudaPublico(
+                        ctl.perguntas[
+                        ctl.indicePergunta
+                        ]);
+                  }, child: const Text('Publico')),
                 ],
               )
             ),
             flex: 1),
+
         Expanded(
             child: _indicePergunta < ctl.perguntas.length ? Pergunta(
               pergunta: ctl.perguntas[_indicePergunta].pergunta ,
@@ -117,5 +136,31 @@ class _PartidaState extends State<Partida> {
 
     print(valor);
     //stdout.writeln(valor);
+  }
+  _mostrarAjudaPublico(PerguntaModel pgt){
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Column(
+              mainAxisSize: MainAxisSize.max,
+              children:  <Widget>[
+                SimpleBarChart( animate: true, pergunta: pgt,),
+              ]
+          );
+        }
+    );
+  }
+  _mostrarAjudaAmigo(PerguntaModel pgt){
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Column(
+              mainAxisSize: MainAxisSize.max,
+              children:  <Widget>[
+                Text('Meu amigo, acho que a resposta certa é ${ pgt.certa}')
+              ]
+          );
+        }
+    );
   }
 }
