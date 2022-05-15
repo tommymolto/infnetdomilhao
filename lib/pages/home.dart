@@ -10,6 +10,7 @@ import 'package:infnetdomilhao/pages/partida_controller.dart';
 import 'package:infnetdomilhao/pages/pergunta.dart';
 import 'package:infnetdomilhao/repositories/partida_repository.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'jogo.dart';
 
