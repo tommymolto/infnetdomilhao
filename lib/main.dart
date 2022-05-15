@@ -3,11 +3,16 @@ import 'package:infnetdomilhao/pages/home.dart';
 import 'package:infnetdomilhao/pages/jogo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './pages/pergunta.dart';
+import 'infra/infnet_database.dart';
 late SharedPreferences sharedPrefs ;
+late AppDatabase database;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // mandatory when awaiting on main
 
   sharedPrefs = await SharedPreferences.getInstance();
+
+   database =
+  await $FloorAppDatabase.databaseBuilder('infnetdomilhao.db').build();
   runApp(const HomePage() );
 }
 class HomePage extends StatelessWidget{

@@ -7,6 +7,6 @@ class Ranking{
   int? id;
   String? nome;
   int? valor;
-  DateTime data = DateTime.now();
-  Ranking({ this.id, this.nome,  this.valor, required this.data});
+
+  Ranking({ this.id, this.nome,  this.valor});
 }

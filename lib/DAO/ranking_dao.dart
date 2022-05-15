@@ -8,10 +8,13 @@ abstract class RankingDao{
   @Query('SELECT * FROM Ranking')
   Stream<List<Ranking>> getAllRanking();
 
+  @Query('SELECT * FROM Ranking order by valor desc')
+  Stream<List<Ranking>> getAllRankingSorted();
+
   @Query('SELECT * FROM Ranking WHERE id = :id')
   Stream<Ranking?> getAllRankingBYID(int id);
 
-  @Query('DELETE FROM Employee')
+  @Query('DELETE FROM Ranking')
   Future<void> deleteAllRanking();
 
   @insert

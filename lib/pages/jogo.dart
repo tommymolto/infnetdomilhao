@@ -8,6 +8,7 @@ import 'package:infnetdomilhao/models/pergunta.dart';
 import 'package:infnetdomilhao/pages/partida.dart';
 import 'package:infnetdomilhao/pages/partida_controller.dart';
 import 'package:infnetdomilhao/pages/pergunta.dart';
+import 'package:infnetdomilhao/pages/ranking_page.dart';
 import 'package:infnetdomilhao/repositories/partida_repository.dart';
 import 'package:provider/provider.dart';
 class Jogo extends StatefulWidget {
@@ -62,7 +63,13 @@ class _JogoState extends State<Jogo> {
             ),
             ElevatedButton(
               child: const Text('Ranking'),
-              onPressed: () {},
+              onPressed: () {
+                final dao = database.rankingDao;
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  RankingPage(dao: dao,)),
+                );
+              },
             )
           ],
         ),

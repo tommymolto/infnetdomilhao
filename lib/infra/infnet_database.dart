@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:floor/floor.dart';
 import 'package:infnetdomilhao/DAO/ranking_dao.dart';
 import 'package:infnetdomilhao/models/ranking.dart';
