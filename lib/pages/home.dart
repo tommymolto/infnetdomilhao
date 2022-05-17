@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:infnetdomilhao/infra/dados_api.dart';
+import 'package:infnetdomilhao/infra/pontuacao.dart';
 import 'package:infnetdomilhao/models/pergunta.dart';
 import 'package:infnetdomilhao/pages/partida.dart';
 import 'package:infnetdomilhao/pages/partida_controller.dart';
@@ -23,9 +24,8 @@ class Home extends StatelessWidget {
     return  MultiProvider(providers:  [
       Provider<DadosApi>.value(value: const DadosApi()),
       Provider<PartidaRepository>.value(value: PartidaRepository(
-        dadosApi: const DadosApi()
+        dadosApi: const DadosApi(), pontuacao: Pontuacao()
       )),
-
       //ChangeNotifierProvider(create: (_) => PartidaRepository()),
       ChangeNotifierProvider(create: (context) =>  PartidaController(context.read<PartidaRepository>())),
     ],

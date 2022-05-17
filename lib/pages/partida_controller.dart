@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:infnetdomilhao/infra/dados_api.dart';
+import 'package:infnetdomilhao/models/pontuacao_model.dart';
 import 'package:infnetdomilhao/repositories/partida_repository.dart';
 import '../models/pergunta.dart';
 enum Ajudas{
@@ -12,17 +13,21 @@ class PartidaController extends ChangeNotifier{
   late List<String> escolhas = [];
   late String pergunta;
   late int indicePergunta = 0;
+  late List<PontuacaoModel> pontuacao;
   late List<PerguntaModel> perguntas = [];
   final ajudas = [Ajudas.Amigo, Ajudas.MeioAMeio, Ajudas.Publico];
 
   final PartidaRepository partidaRepository ;
   PartidaController(this.partidaRepository);
+
+
   getPerguntas() async{
-    perguntas = await partidaRepository.getPerguntas();
+    //perguntas = await partidaRepository.getPerguntas();
+    perguntas = await partidaRepository.getPerguntasParaPartida();
     notifyListeners();
   }
-  getPergunta(){
-
+  getPontuacao() async{
+    pontuacao = await partidaRepository.getPontuacao();
   }
   usarAjuda(Ajudas aj){
     switch (aj){
@@ -36,7 +41,6 @@ class PartidaController extends ChangeNotifier{
 
   }
   usarAjudaMeioAMeio(){
-    print('meio a meio');
     var meio = true;
     for (var element in perguntas[indicePergunta].respostas) {
       if(perguntas[indicePergunta].certa == element.resposta){
@@ -48,8 +52,9 @@ class PartidaController extends ChangeNotifier{
         element.enabled = false;
       }
     }
-  for(final l in perguntas[indicePergunta].respostas){
-    print(l.toJson());
+
   }
+  preenchePerguntasEPontos(){
+
   }
 }
