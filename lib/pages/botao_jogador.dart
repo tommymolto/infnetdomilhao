@@ -12,13 +12,14 @@ class BotaoJogador extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('enabled=$enabled');
     return Expanded(
         child: Padding(
           padding: EdgeInsets.all(2.0),
           child: ElevatedButton(
-              onPressed: () {
-                enabled ? onClick : null;
-              },
+              onPressed: enabled ? () {
+                onClick();
+              }: null,
               child: Text(texto),
               style: ElevatedButton.styleFrom(
                 primary: Colors.purple,

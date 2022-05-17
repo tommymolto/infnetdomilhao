@@ -30,6 +30,7 @@ class _PartidaState extends State<Partida> {
     // TODO: implement initState
     super.initState();
     Provider.of<PartidaController>(context, listen: false).getPerguntas();
+    Provider.of<PartidaController>(context, listen: false).getPontuacao();
   }
 
   @override
@@ -51,7 +52,7 @@ class _PartidaState extends State<Partida> {
                       children: [
                         Expanded(
                             child: Text(
-                              'Valendo: ${context.watch<PartidaController>().totalPontos}',
+                              'Valendo: ${context.watch<PartidaController>().pontuacao[ctl.indicePergunta].valor}',
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -61,33 +62,34 @@ class _PartidaState extends State<Partida> {
                             flex: 1),
 
                         BotaoJogador(
-                            enabled: true,
-                            texto: 'Meio a Meio ',
-                            onClick: () {
-                              setState(() {
-                                Provider.of<PartidaController>(context,
-                                    listen: false)
-                                    .usarAjudaMeioAMeio();
-                              });
-                            }),
+                          enabled: ctl.ajudas.contains(Ajudas.MeioAMeio)
+                              ? true
+                              : false,
+                          texto: 'Meio a Meio ',
+                          onClick: _internal,
+                        ),
                         BotaoJogador(
-                            enabled: true,
+                            enabled: ctl.ajudas.contains(Ajudas.Amigo)
+                                ? true
+                                : false,
                             texto: 'Amigo ',
                             onClick: () {
                               _mostrarAjudaAmigo(
                                   ctl.perguntas[ctl.indicePergunta]);
                             }),
                         BotaoJogador(
-                            enabled: true,
+                            enabled: ctl.ajudas.contains(Ajudas.Publico)
+                                ? true
+                                : false,
                             texto: 'Publico ',
                             onClick: () {
-
                               _mostrarAjudaPublico(
                                   ctl.perguntas[ctl.indicePergunta]);
-                            }),
+                            }
+                            ),
                         BotaoJogador(
                             enabled: true,
-                            texto: 'Desistir pot ',
+                            texto: 'Desistir por ${ctl.pontuacao[ctl.indicePergunta].portoSeguro} ',
                             onClick: () {}),
                         //const SizedBox(width: 5),
 
@@ -129,7 +131,7 @@ class _PartidaState extends State<Partida> {
   _resetGame() {
     setState(() {
       Provider.of<PartidaController>(context, listen: false).totalPontos = 0;
-      Provider.of<PartidaController>(context, listen: false).escolhas.clear();
+      // Provider.of<PartidaController>(context, listen: false).escolhas.clear();
       Provider.of<PartidaController>(context, listen: false).indicePergunta = 0;
     });
   }
@@ -142,9 +144,7 @@ class _PartidaState extends State<Partida> {
               .certa) {
         Provider.of<PartidaController>(context, listen: false).totalPontos++;
       }
-      Provider.of<PartidaController>(context, listen: false)
-          .escolhas
-          .add(valor);
+
       Provider.of<PartidaController>(context, listen: false).indicePergunta++;
       print(Provider.of<PartidaController>(context, listen: false)
           .indicePergunta);
@@ -155,6 +155,9 @@ class _PartidaState extends State<Partida> {
   }
 
   _mostrarAjudaPublico(PerguntaModel pgt) {
+
+    Provider.of<PartidaController>(context, listen: false)
+        .usarAjuda(Ajudas.Publico);
     showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -168,6 +171,9 @@ class _PartidaState extends State<Partida> {
   }
 
   _mostrarAjudaAmigo(PerguntaModel pgt) {
+    Provider.of<PartidaController>(context, listen: false)
+        .usarAjuda(Ajudas.Amigo);
+
     showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -175,5 +181,15 @@ class _PartidaState extends State<Partida> {
             Text('Meu amigo, acho que a resposta certa é ${pgt.certa}')
           ]);
         });
+  }
+
+  _internal() {
+    print('oi');
+    setState(() {
+      Provider.of<PartidaController>(context, listen: false)
+          .usarAjuda(Ajudas.MeioAMeio);
+      Provider.of<PartidaController>(context, listen: false)
+          .usarAjudaMeioAMeio();
+    });
   }
 }

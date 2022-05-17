@@ -9,11 +9,12 @@ enum Ajudas{
   MeioAMeio
 }
 class PartidaController extends ChangeNotifier{
+  late int portoSeguro;
+
   late int totalPontos = 0;
-  late List<String> escolhas = [];
   late String pergunta;
-  late int indicePergunta = 0;
-  late List<PontuacaoModel> pontuacao;
+  int indicePergunta = 0;
+  late List<PontuacaoModel> pontuacao = [];
   late List<PerguntaModel> perguntas = [];
   final ajudas = [Ajudas.Amigo, Ajudas.MeioAMeio, Ajudas.Publico];
 
@@ -32,12 +33,16 @@ class PartidaController extends ChangeNotifier{
   usarAjuda(Ajudas aj){
     switch (aj){
       case Ajudas.Publico:
+        ajudas.remove(Ajudas.Publico);
         break;
       case Ajudas.Amigo:
+        ajudas.remove(Ajudas.Amigo);
         break;
       case Ajudas.MeioAMeio:
+        ajudas.remove(Ajudas.MeioAMeio);
         break;
     }
+    notifyListeners();
 
   }
   usarAjudaMeioAMeio(){
