@@ -52,7 +52,6 @@ class Pergunta extends StatelessWidget {
                         textoResposta: respostas[0].resposta.toString(),
                         iconData: Icons.circle,
                         respostaModel: respostas[0],
-
                         function: onClick,
                         indice: indice,
                         cor: respostas[0].enabled == false ? Colors.grey: Colors.red ,
@@ -87,7 +86,7 @@ class Pergunta extends StatelessWidget {
                       iconData: Icons.add,
                       function: onClick,
                       indice: indice,
-                      cor: respostas[1].enabled == false ? Colors.grey: Colors.green ,
+                      cor: respostas[3].enabled == false ? Colors.grey: Colors.blue ,
                       respostaModel: respostas[3],
 
                     ),

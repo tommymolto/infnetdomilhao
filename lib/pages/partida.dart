@@ -4,12 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:infnetdomilhao/models/pergunta.dart';
+import 'package:infnetdomilhao/pages/modal_publico.dart';
 import 'package:infnetdomilhao/pages/partida_controller.dart';
 import 'package:infnetdomilhao/pages/pergunta.dart';
 import 'package:provider/provider.dart';
 
 import '../models/resposta_model.dart';
-
+enum TipoModal{
+  Publico,
+  Amigo
+}
 class Partida extends StatefulWidget {
   const Partida({Key? key}) : super(key: key);
 
@@ -36,7 +40,7 @@ class _PartidaState extends State<Partida> {
   Widget build(BuildContext context) {
     final ctl  = context.watch<PartidaController>();
 
-    final _indicePergunta = context.watch<PartidaController>().indicePergunta;
+    final _indicePergunta = ctl.indicePergunta;
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
@@ -50,21 +54,30 @@ class _PartidaState extends State<Partida> {
               child: Row(
                 children: [
                   Text(
-                    'Pontos: ${ context.watch<PartidaController>().totalPontos}',
+                    'Pontos: ${ ctl.totalPontos}',
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.blue,
                     ),
                   ),
-                  ElevatedButton(onPressed: () {
+                   const SizedBox(width: 20),
+                   ElevatedButton(onPressed:  () {
                     setState(() {
                       Provider.of<PartidaController>(context, listen: false).usarAjudaMeioAMeio();
-
                     });
-                    } , child: const Text('50%/50%')),
-                  ElevatedButton(onPressed: null, child: const Text('Amigo')),
-                  ElevatedButton(onPressed: null, child: const Text('Publico')),
+                    },
+                      child: Text('50%/50%')),
+                  const SizedBox(width: 20),
+
+                   ElevatedButton(onPressed: () {
+                     _mostrarModal(ctl.perguntas[ctl.indicePergunta], TipoModal.Amigo);
+                   }, child: Text('Amigo')),
+                  const SizedBox(width: 20),
+
+                   ElevatedButton(onPressed: () {
+                     _mostrarModal(ctl.perguntas[ctl.indicePergunta], TipoModal.Publico);
+                   }, child: Text('Publico')),
                 ],
               )
             ),
@@ -111,11 +124,28 @@ class _PartidaState extends State<Partida> {
       }
         Provider.of<PartidaController>(context, listen: false).escolhas.add(valor);
         Provider.of<PartidaController>(context, listen: false).indicePergunta++;
-        print(Provider.of<PartidaController>(context, listen: false).indicePergunta);
+        // print(Provider.of<PartidaController>(context, listen: false).indicePergunta);
 
     });
-
-    print(valor);
     //stdout.writeln(valor);
   }
+
+
+  _mostrarModal(PerguntaModel perguntaModel,TipoModal tipoModal ){
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children:  [
+              tipoModal == TipoModal.Publico ? ModalPublico(perguntaModel: perguntaModel) :
+              Text( 'Meu amigo, eu acho que a resposta é ${ perguntaModel.certa } '),
+            ],
+          );
+        }
+    );
+
+  }
+
 }

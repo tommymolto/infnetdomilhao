@@ -21,7 +21,7 @@ class Resposta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(respostaModel.enabled);
+    // print(respostaModel.enabled);
     return Expanded(
       flex: 1,
       child: Padding(

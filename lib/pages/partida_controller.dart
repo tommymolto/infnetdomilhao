@@ -36,7 +36,7 @@ class PartidaController extends ChangeNotifier{
 
   }
   usarAjudaMeioAMeio(){
-    print('meio a meio');
+
     var meio = true;
     for (var element in perguntas[indicePergunta].respostas) {
       if(perguntas[indicePergunta].certa == element.resposta){
@@ -44,12 +44,16 @@ class PartidaController extends ChangeNotifier{
       }else if(meio == true){
         element.enabled = true;
         meio = false;
-      } else{
+      }else{
         element.enabled = false;
       }
+
     }
-  for(final l in perguntas[indicePergunta].respostas){
-    print(l.toJson());
+    /*for(final l in perguntas[indicePergunta].respostas){
+      print(l.toJson());
+    }*/
+    notifyListeners();
+
   }
-  }
+
 }

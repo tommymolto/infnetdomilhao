@@ -22,7 +22,7 @@ class PerguntaModel extends Equatable {
     return {
       'tipo': tipo,
       'pergunta': pergunta,
-      'respostas': List<dynamic>.from(respostas.map((x) => RespostaModel(resposta: x.toString()))),
+      'respostas': List<dynamic>.from(respostas.map((x) => RespostaModel(resposta: x.toString()))).toString(),
       'certa': certa,
     };
   }
