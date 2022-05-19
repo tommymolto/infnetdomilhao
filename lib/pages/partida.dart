@@ -10,10 +10,7 @@ import 'package:infnetdomilhao/pages/pergunta.dart';
 import 'package:provider/provider.dart';
 
 import '../models/resposta_model.dart';
-enum TipoModal{
-  Publico,
-  Amigo
-}
+
 class Partida extends StatefulWidget {
   const Partida({Key? key}) : super(key: key);
 
