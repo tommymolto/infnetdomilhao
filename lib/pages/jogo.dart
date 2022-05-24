@@ -34,6 +34,8 @@ class _JogoState extends State<Jogo> {
 
   @override
   Widget build(BuildContext context) {
+    final dao = database.rankingDao;
+
     // TODO: implement build
     return   Scaffold(
         appBar: AppBar(
@@ -62,7 +64,7 @@ class _JogoState extends State<Jogo> {
                 });
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Partida()),
+                  MaterialPageRoute(builder: (context) =>  Partida(rankingDao: dao,)),
                 );
               },
             ),

@@ -1,125 +1,317 @@
- [
-    {
-      "tipo": "FACIL",
-      "pergunta": "Em que estado brasileiro nasceu a apresentadora Xuxa?",
-      "respostas": [
-        "RIO DE JANEIRO",
-        "RIO GRANDE DO SUL",
-        "SANTA CATARINA",
-        "GOIÁS"
-      ],
-      "certa": "RIO GRANDE DO SUL"
-    },
-    {
-      "tipo": "FACIL",
+[
+  {
+    "tipo": "FACIL",
+    "pergunta": "Em que estado brasileiro nasceu a apresentadora Xuxa?",
+    "respostas": [
+      "RIO DE JANEIRO",
+      "RIO GRANDE DO SUL",
+      "SANTA CATARINA",
+      "GOIÁS"
+    ],
+    "certa": "RIO GRANDE DO SUL"
+  },
+  {
+    "tipo": "FACIL",
 
-      "pergunta": "Qual é o nome dado ao estado da água em forma de gelo?",
-      "respostas": [
-        "Liquido",
-        "Solido",
-        "Gasoso",
-        "Vaporoso"
-      ],
-      "certa": "Solido"
-    },
-    {
-      "tipo": "FACIL",
+    "pergunta": "Qual é o nome dado ao estado da água em forma de gelo?",
+    "respostas": [
+      "Liquido",
+      "Solido",
+      "Gasoso",
+      "Vaporoso"
+    ],
+    "certa": "Solido"
+  },
+  {
+    "tipo": "FACIL",
 
-      "pergunta": "Qual era o apelido da cantora Elis Regina?",
-      "respostas": [
-        "GAUCHINHA",
-        "PAULISTINHA",
-        "PIMENTINHA",
-        "ANDORINHA"
-      ],
-      "certa": "PIMENTINHA"
-    },
-    {
-      "tipo": "FACIL",
+    "pergunta": "Qual era o apelido da cantora Elis Regina?",
+    "respostas": [
+      "GAUCHINHA",
+      "PAULISTINHA",
+      "PIMENTINHA",
+      "ANDORINHA"
+    ],
+    "certa": "PIMENTINHA"
+  },
+  {
+    "tipo": "FACIL",
 
-      "pergunta": "Quem é a namorada do Mickey?",
-      "respostas": [
-        "MARGARIDA",
-        "MINNIE",
-        "A PEQUENA SEREIA",
-        "OLÍVIA PALITO"
-      ],
-      "certa": "MINNIE"
-    },
-    {
-      "tipo": "FACIL",
+    "pergunta": "Quem é a namorada do Mickey?",
+    "respostas": [
+      "MARGARIDA",
+      "MINNIE",
+      "A PEQUENA SEREIA",
+      "OLÍVIA PALITO"
+    ],
+    "certa": "MINNIE"
+  },
+  {
+    "tipo": "FACIL",
 
-      "pergunta":
-      "Qual é o personagem do folclore brasileiro que tem uma perna só?",
-      "respostas": [
-        "CUCA",
-        "Negrinho do Pastoreiro",
-        "Boitatá",
-        "Saci Pererê"
-      ],
-      "certa": "Saci Pererê"
-    },
-    {
-      "tipo": "FACIL",
-      "pergunta":
-      "Fidel Castro nasceu em que país?",
-      "respostas": [
-        "JAMAICA",
-        "CUBA",
-        "EL SALVADOR",
-        "MÉXICO"
-      ],
-      "certa": "CUBA"
-    }
-  ,
-    {
-      "tipo": "FACIL",
-      "pergunta":
-      "Quem proclamou a república no Brasil em 1889?",
-      "respostas": [
-        "DUQUE DE CAXIAS",
-        "MARECHAL RONDON",
-        "DOM PEDRO II",
-        "MARECHAL DEODORO"
-      ],
-      "certa": "DOM PEDRO II"
-    },
-    {
-      "tipo": "FACIL",
-      "pergunta":
-      "Quem é o patrono do exército brasileiro?",
-      "respostas": [
-        "MARECHAL DEODORO",
-        "BARÃO DE MAUÁ",
-        "DUQUE DE CAXIAS",
-        "MARQUÊS DE POMBAL"
-      ],
-      "certa": "DUQUE DE CAXIAS"
-    },
-    {
-      "tipo": "FACIL",
-      "pergunta":
-      "Quem era o apresentador que reprovava os calouros tocando uma buzina?",
-      "respostas": [
-        "RAUL GIL",
-        "BOLINHA",
-        "FLÁVIO CAVALCANTI",
-        "CHACRINHA"
-      ],
-      "certa": "CHACRINHA"
-    },
-    {
-      "tipo": "FACIL",
-      "pergunta":
-      "O que era Frankenstein, de Mary Shelley?",
-      "respostas": [
-        "MONSTRO",
-        "GORILA",
-        "PRÍNCIPE",
-        "CHACRINHA"
-      ],
-      "certa": "SAPO"
-    }
-  ]
+    "pergunta":
+    "Qual é o personagem do folclore brasileiro que tem uma perna só?",
+    "respostas": [
+      "CUCA",
+      "Negrinho do Pastoreiro",
+      "Boitatá",
+      "Saci Pererê"
+    ],
+    "certa": "Saci Pererê"
+  },
+  {
+    "tipo": "FACIL",
+    "pergunta":
+    "Fidel Castro nasceu em que país?",
+    "respostas": [
+      "JAMAICA",
+      "CUBA",
+      "EL SALVADOR",
+      "MÉXICO"
+    ],
+    "certa": "CUBA"
+  }
+,
+  {
+    "tipo": "FACIL",
+    "pergunta":
+    "Quem proclamou a república no Brasil em 1889?",
+    "respostas": [
+      "DUQUE DE CAXIAS",
+      "MARECHAL RONDON",
+      "DOM PEDRO II",
+      "MARECHAL DEODORO"
+    ],
+    "certa": "DOM PEDRO II"
+  },
+  {
+    "tipo": "FACIL",
+    "pergunta":
+    "Quem é o patrono do exército brasileiro?",
+    "respostas": [
+      "MARECHAL DEODORO",
+      "BARÃO DE MAUÁ",
+      "DUQUE DE CAXIAS",
+      "MARQUÊS DE POMBAL"
+    ],
+    "certa": "DUQUE DE CAXIAS"
+  },
+  {
+    "tipo": "FACIL",
+    "pergunta":
+    "Quem era o apresentador que reprovava os calouros tocando uma buzina?",
+    "respostas": [
+      "RAUL GIL",
+      "BOLINHA",
+      "FLÁVIO CAVALCANTI",
+      "CHACRINHA"
+    ],
+    "certa": "CHACRINHA"
+  },
+  {
+    "tipo": "FACIL",
+    "pergunta":
+    "O que era Frankenstein, de Mary Shelley?",
+    "respostas": [
+      "MONSTRO",
+      "GORILA",
+      "PRÍNCIPE",
+      "CHACRINHA"
+    ],
+    "certa": "SAPO"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Quantos jogadores um jogo de vôlei reúne na quadra?",
+    "respostas": [
+      "SEIS",
+      "OITO",
+      "DEZ",
+      "DOZE"
+    ],
+    "certa": "OITO"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Qual é o país do tango?",
+    "respostas": [
+      "URUGUAI",
+      "ARGENTINA",
+      "PARAGUAI",
+      "ESPANHA"
+    ],
+    "certa": "ARGENTINA"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Que imperador pôs fogo em Roma?",
+    "respostas": [
+      "TRAJANO",
+      "NERO",
+      "BRUTUS",
+      "CALÍGULA"
+    ],
+    "certa": "NERO"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "A cidade de Pompéia, que foi soterrada por um vulcão fica em qual desses países?",
+    "respostas": [
+      "JAPÃO",
+      "MÉXICO",
+      "ITÁLIA",
+      "ESTADOS UNIDOS"
+    ],
+    "certa": "ITÁLIA"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Como é chamado quem nasce em Milão, na Itália?",
+    "respostas": [
+      "MILANENSE",
+      "MILANOSO",
+      "MILISTA",
+      "MILANÊS"
+    ],
+    "certa": "MILANÊS"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Que profissional usa uma ferramenta chamada formão?",
+    "respostas": [
+      "CARPINTEIRO",
+      "RELOJOEIRO",
+      "CONFEITEIRO",
+      "BOMBEIRO"
+    ],
+    "certa": "CARPINTEIRO"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Em qual estádio Pelé marcou seu milésimo gol?",
+    "respostas": [
+      "MORUMBI",
+      "PACAEMBU",
+      "MARACANÃ",
+      "MINEIRÃO"
+    ],
+    "certa": "MARACANÃ"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "O que é um oboé?",
+    "respostas": [
+      "VULCÃO",
+      "COMIDA",
+      "INSTRUMENTO MUSICAL",
+      "TRIBO INDÍGENA"
+    ],
+    "certa": "INSTRUMENTO MUSICAL"
+  },
+  {
+    "tipo": "MEDIO",
+    "pergunta":
+    "Como eram chamados os pilotos suicidas da Segunda Guerra?",
+    "respostas": [
+      "CAMICASES",
+      "SASHIMIS",
+      "HARAQUIRIS",
+      "SUMÔS"
+    ],
+    "certa": "CAMICASES"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Em qual espécie o macho choca os ovos e a fêmea procura alimento?",
+    "respostas": [
+      "ANDORINHA",
+      "PATO SELVAGEM",
+      "PINGÜIM",
+      "MARRECO"
+    ],
+    "certa": "PINGÜIM"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Em qual país está localizado o “Muro das lamentações?",
+    "respostas": [
+      "ALEMANHA",
+      "BRASIL",
+      "VENEZUELA",
+      "ISRAEL"
+    ],
+    "certa": "ISRAEL"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Qual desses países não fica na Ásia?",
+    "respostas": [
+      "PAQUISTÃO",
+      "JAPÃO",
+      "TAILÂNDIA",
+      "EGITO"
+    ],
+    "certa": "EGITO"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Qual desses astros de filmes de ação é belga?",
+    "respostas": [
+      "ARNOLD SCHWARZENEGGER",
+      "SYLVESTER STALLONE",
+      "STEVEN SEAGAL",
+      "JEAN CLAUDE VAN DAMME"
+    ],
+    "certa": "JEAN CLAUDE VAN DAMME"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Onde foi conduzida a vitória das forças aliadas na Segunda Guerra Mundial?",
+    "respostas": [
+      "CANNES",
+      "NORMANDIA",
+      "CAPRI",
+      "MARSELHA"
+    ],
+    "certa": "NORMANDIA"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Onde nasceu Van Gogh, o grande pintor impressionista?",
+    "respostas": [
+      "POLÔNIA",
+      "FRANÇA",
+      "ITÁLIA",
+      "MARSELHA"
+    ],
+    "certa": "HOLANDA"
+  },
+  {
+    "tipo": "DIFICIL",
+    "pergunta":
+    "Qual é a primeira letra do alfabeto grego?",
+    "respostas": [
+      "DELTA",
+      "BETA",
+      "ALFA",
+      "GAMA"
+    ],
+    "certa": "ALFA"
+  }
+]
 
 

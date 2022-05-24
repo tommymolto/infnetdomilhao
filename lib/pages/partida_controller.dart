@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:infnetdomilhao/infra/dados_api.dart';
 import 'package:infnetdomilhao/repositories/partida_repository.dart';
 import '../models/pergunta.dart';
+import '../models/pontuacao_model.dart';
 enum Ajudas{
   Publico,
   Amigo,
@@ -13,12 +14,15 @@ class PartidaController extends ChangeNotifier{
   late String pergunta;
   late int indicePergunta = 0;
   late List<PerguntaModel> perguntas = [];
-  final ajudas = [Ajudas.Amigo, Ajudas.MeioAMeio, Ajudas.Publico];
+  late List<Ajudas> ajudas =[];
+  late List<PontuacaoModel> pontuacao = [];
 
   final PartidaRepository partidaRepository ;
   PartidaController(this.partidaRepository);
   getPerguntas() async{
-    perguntas = await partidaRepository.getPerguntas();
+    //perguntas = await partidaRepository.getPerguntas();
+    ajudas = [Ajudas.Amigo, Ajudas.MeioAMeio, Ajudas.Publico];
+    perguntas = await partidaRepository.getPerguntasParaPartida();
     notifyListeners();
   }
   getPergunta(){
@@ -27,12 +31,16 @@ class PartidaController extends ChangeNotifier{
   usarAjuda(Ajudas aj){
     switch (aj){
       case Ajudas.Publico:
+        ajudas.remove(Ajudas.Publico);
         break;
       case Ajudas.Amigo:
+        ajudas.remove(Ajudas.Amigo);
         break;
       case Ajudas.MeioAMeio:
+        ajudas.remove(Ajudas.MeioAMeio);
         break;
     }
+    notifyListeners();
 
   }
   usarAjudaMeioAMeio(){
@@ -49,11 +57,13 @@ class PartidaController extends ChangeNotifier{
       }
 
     }
-    /*for(final l in perguntas[indicePergunta].respostas){
-      print(l.toJson());
-    }*/
+
     notifyListeners();
 
+  }
+  getPontuacao() async{
+    pontuacao = await partidaRepository.getPontuacao();
+    notifyListeners();
   }
 
 }
