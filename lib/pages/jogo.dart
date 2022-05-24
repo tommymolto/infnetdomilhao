@@ -42,51 +42,65 @@ class _JogoState extends State<Jogo> {
           title: const Text('Infnet do Milhao'),
           backgroundColor: Colors.blue ,
         ),
-        body:  Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset('showdomilhao.png'),
-             Padding(padding: EdgeInsets.all(3.0),
-            child:
-              TextField(
-                controller: _controller,
-                decoration:  const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Entre com o nome do jogador'
+        body:  SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.3
                 ),
-              ),),
-            ElevatedButton(
-              child: Text('Jogar'),
-              onPressed: () {
-                setState(() {
-                  sharedPrefs.setString('NomeJogador', _controller.text);
-                });
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  Partida(rankingDao: dao,)),
-                );
-              },
-            ),
-            ElevatedButton(
-              child: const Text('Ranking'),
-              onPressed: () {
-                final dao = database.rankingDao;
-                setState(() {
-                  var x = Ranking(nome: 'PM', valor: 1000);
-                  dao.insertRanking(x);
-                  x.nome = 'Paulo';
-                  x.valor = 10;
-                  dao.insertRanking(x);
-                });
+                //height: MediaQuery.of(context).size.height * 0.5,
+                child: FittedBox(
+                  child: Image.asset('showdomilhao.png',
+                    fit: BoxFit.fitHeight,),
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  RankingPage(rankingDao: dao)),
-                );
-              },
-            )
-          ],
+                ),
+              )
+
+              ,
+              Padding(padding: EdgeInsets.all(3.0),
+                child:
+                TextField(
+                  controller: _controller,
+                  decoration:  const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Entre com o nome do jogador'
+                  ),
+                ),),
+              ElevatedButton(
+                child: Text('Jogar'),
+                onPressed: () {
+                  setState(() {
+                    sharedPrefs.setString('NomeJogador', _controller.text);
+                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  Partida(rankingDao: dao,)),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Ranking'),
+                onPressed: () {
+                  final dao = database.rankingDao;
+                  setState(() {
+                    var x = Ranking(nome: 'PM', valor: 1000);
+                    dao.insertRanking(x);
+                    x.nome = 'Paulo';
+                    x.valor = 10;
+                    dao.insertRanking(x);
+                  });
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  RankingPage(rankingDao: dao)),
+                  );
+                },
+              )
+            ],
+          ),
         ),
       )
     ;

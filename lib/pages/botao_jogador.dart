@@ -22,6 +22,8 @@ class BotaoJogador extends StatelessWidget {
               }: null,
               child: Text(texto),
               style: ElevatedButton.styleFrom(
+                minimumSize: Size.fromWidth(MediaQuery.of(context).size.width * 0.3),
+                //maximumSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.3),
                 primary: Colors.purple,
                 padding: const EdgeInsets.all(10.0),
                 textStyle: const TextStyle(

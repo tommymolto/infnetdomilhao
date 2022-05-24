@@ -14,6 +14,7 @@ import '../DAO/ranking_dao.dart';
 import '../main.dart';
 import '../models/resposta_model.dart';
 import 'botao_jogador.dart';
+import 'fim_jogo.dart';
 import 'jogo.dart';
 
 enum TipoModal { Publico, Amigo }
@@ -50,105 +51,99 @@ class _PartidaState extends State<Partida> {
     final ctl = context.watch<PartidaController>();
 
     final _indicePergunta = ctl.indicePergunta;
+    final sentido = MediaQuery.of(context).orientation;
+    final filhos = [
+      Expanded(
+          child: Text(
+            'Valendo :\n R\$ ${ctl.pontuacao[ctl.indicePergunta].valor}',
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: Colors.blue,
+            ),
+          ),
+          flex: 1),
+      BotaoJogador(
+        enabled: ctl.ajudas.contains(Ajudas.MeioAMeio) ? true : false,
+        texto: 'Meio a Meio ',
+        onClick: _clickMeioAMeio,
+      ),
+      BotaoJogador(
+          enabled: ctl.ajudas.contains(Ajudas.Amigo) ? true : false,
+          texto: 'Amigo ',
+          onClick: () {
+            _mostrarModal(ctl.perguntas[ctl.indicePergunta], TipoModal.Amigo,
+                Ajudas.Amigo);
+          }),
+      BotaoJogador(
+          enabled: ctl.ajudas.contains(Ajudas.Publico) ? true : false,
+          texto: 'Publico ',
+          onClick: () {
+            _mostrarModal(ctl.perguntas[ctl.indicePergunta], TipoModal.Publico,
+                Ajudas.Publico);
+          }),
+      BotaoJogador(
+          enabled: true,
+          texto:
+              'Desistir por ${ctl.pontuacao[ctl.indicePergunta].portoSeguro} ',
+          onClick: () {
+            final nome = sharedPrefs.getString('NomeJogador') ?? 'Anonymous';
+            _salvaFimDeJogo(
+                nome, ctl.pontuacao[ctl.indicePergunta].portoSeguro);
+          })
+    ];
+
+    ;
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Partida do Milhao'),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: Text(
-                              'Valendo :\n R\$ ${ctl.pontuacao[ctl.indicePergunta].valor}',
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            flex: 1),
-                        BotaoJogador(
-                          enabled: ctl.ajudas.contains(Ajudas.MeioAMeio)
-                              ? true
-                              : false,
-                          texto: 'Meio a Meio ',
-                          onClick: _clickMeioAMeio,
-                        ),
-                        BotaoJogador(
-                            enabled: ctl.ajudas.contains(Ajudas.Amigo)
-                                ? true
-                                : false,
-                            texto: 'Amigo ',
-                            onClick: () {
-                              _mostrarModal(ctl.perguntas[ctl.indicePergunta],
-                                  TipoModal.Amigo, Ajudas.Amigo);
-                            }),
-                        BotaoJogador(
-                            enabled: ctl.ajudas.contains(Ajudas.Publico)
-                                ? true
-                                : false,
-                            texto: 'Publico ',
-                            onClick: () {
-                              _mostrarModal(ctl.perguntas[ctl.indicePergunta],
-                                  TipoModal.Publico, Ajudas.Publico);
-                            }),
-                        BotaoJogador(
-                            enabled: true,
-                            texto:
-                                'Desistir por ${ctl.pontuacao[ctl.indicePergunta].portoSeguro} ',
-                            onClick: () {
-                              final nome =
-                                  sharedPrefs.getString('NomeJogador') ??
-                                      'Anonymous';
-                              _salvaFimDeJogo(
-                                  nome,
-                                  ctl.pontuacao[ctl.indicePergunta]
-                                      .portoSeguro);
-                            }),
-                      ],
-                    )),
-                flex: 1),
-            Expanded(
-                child: (_indicePergunta < ctl.perguntas.length) && !_gameOver
-                    ? Pergunta(
-                        pergunta: ctl.perguntas[_indicePergunta].pergunta,
-                        respostas: ctl.perguntas[_indicePergunta].respostas,
-                        indice: ctl.indicePergunta,
-                        onClick: _onClicked,
-                      )
-                    : Center(
-                        child: Column(
-                        children: [
-                          Text('Fim de Jogo!'),
-                          Text(
-                              '${sharedPrefs.getString('NomeJogador')} ganhou ${ctl.pontuacao[ctl.indicePergunta].portoSeguro}'),
-                          SizedBox(
-                            child: ElevatedButton(
-                              onPressed: _resetGame,
-                              child: Text('Reiniciar'),
-                            ),
-                          ),
-                          SizedBox(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Jogo()));
-                              },
-                              child: Text('Sair'),
-                            ),
-                          ),
-                        ],
-                      )),
-                flex: 5),
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text('Partida do Milhao'),
+      ),
+      body: sentido == Orientation.portrait
+          ? Column(children: [
+              Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        children: filhos,
+                      )))
+            ,
+        Expanded(
+            child: (_indicePergunta < ctl.perguntas.length) && !_gameOver
+                ? Pergunta(
+              pergunta: ctl.perguntas[_indicePergunta].pergunta,
+              respostas: ctl.perguntas[_indicePergunta].respostas,
+              indice: ctl.indicePergunta,
+              onClick: _onClicked,
+            )
+                : FimJogo(
+              nomeJogador: sharedPrefs.getString('NomeJogador')!,
+              pontuacao: ctl.pontuacao[ctl.indicePergunta].portoSeguro,
+              onResetClick: _resetGame,
+            ),
+            flex: 5)])
+          : Row(children: [
+              Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(
+                        children: filhos,
+                      )))
+            ,Expanded(
+            child: (_indicePergunta < ctl.perguntas.length) && !_gameOver
+                ? Pergunta(
+              pergunta: ctl.perguntas[_indicePergunta].pergunta,
+              respostas: ctl.perguntas[_indicePergunta].respostas,
+              indice: ctl.indicePergunta,
+              onClick: _onClicked,
+            )
+                : FimJogo(
+              nomeJogador: sharedPrefs.getString('NomeJogador')!,
+              pontuacao: ctl.pontuacao[ctl.indicePergunta].portoSeguro,
+              onResetClick: _resetGame,
+            ),
+            flex: 5)]),
+    );
   }
 
   _resetGame() {
@@ -171,14 +166,14 @@ class _PartidaState extends State<Partida> {
             .add(valor);
         Provider.of<PartidaController>(context, listen: false).indicePergunta++;
       } else {
-        final nome =
-            sharedPrefs.getString('NomeJogador') ??
-                'Anonymous';
+        final nome = sharedPrefs.getString('NomeJogador') ?? 'Anonymous';
         _salvaFimDeJogo(
             nome,
-            Provider.of<PartidaController>(context, listen: false).pontuacao[Provider.of<PartidaController>(context, listen: false).indicePergunta]
+            Provider.of<PartidaController>(context, listen: false)
+                .pontuacao[
+                    Provider.of<PartidaController>(context, listen: false)
+                        .indicePergunta]
                 .portoSeguro);
-
       }
 
       // print(Provider.of<PartidaController>(context, listen: false).indicePergunta);
