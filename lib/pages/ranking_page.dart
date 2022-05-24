@@ -8,11 +8,6 @@ import 'package:infnetdomilhao/DAO/ranking_dao.dart';
 import 'package:infnetdomilhao/models/ranking.dart';
 
 import '../infra/infnet_database.dart';
-
-
-
-
-
 class RankingPage extends StatefulWidget {
   RankingPage({Key? key, this.dao});
 

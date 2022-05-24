@@ -119,7 +119,199 @@
         "CHACRINHA"
       ],
       "certa": "SAPO"
-    }
+    },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Quantos jogadores um jogo de vôlei reúne na quadra?",
+     "respostas": [
+       "SEIS",
+       "OITO",
+       "DEZ",
+       "DOZE"
+     ],
+     "certa": "OITO"
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Qual é o país do tango?",
+     "respostas": [
+       "URUGUAI",
+       "ARGENTINA",
+       "PARAGUAI",
+       "ESPANHA"
+     ],
+     "certa": "ARGENTINA"
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Que imperador pôs fogo em Roma?",
+     "respostas": [
+       "TRAJANO",
+       "NERO",
+       "BRUTUS",
+       "CALÍGULA"
+     ],
+     "certa": "NERO"
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "A cidade de Pompéia, que foi soterrada por um vulcão fica em qual desses países?",
+     "respostas": [
+       "JAPÃO",
+       "MÉXICO",
+       "ITÁLIA",
+       "ESTADOS UNIDOS"
+     ],
+     "certa": "ITÁLIA"
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Como é chamado quem nasce em Milão, na Itália?",
+     "respostas": [
+       "MILANENSE",
+       "MILANOSO",
+       "MILISTA",
+       "MILANÊS"
+     ],
+     "certa": ""
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Que profissional usa uma ferramenta chamada formão?",
+     "respostas": [
+       "CARPINTEIRO",
+       "RELOJOEIRO",
+       "CONFEITEIRO",
+       "BOMBEIRO"
+     ],
+     "certa": ""
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Em qual estádio Pelé marcou seu milésimo gol?",
+     "respostas": [
+       "MORUMBI",
+       "PACAEMBU",
+       "MARACANÃ",
+       "MINEIRÃO"
+     ],
+     "certa": ""
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "O que é um oboé?",
+     "respostas": [
+       "VULCÃO",
+       "COMIDA",
+       "INSTRUMENTO MUSICAL",
+       "TRIBO INDÍGENA"
+     ],
+     "certa": "INSTRUMENTO MUSICAL"
+   },
+   {
+     "tipo": "MEDIO",
+     "pergunta":
+     "Como eram chamados os pilotos suicidas da Segunda Guerra?",
+     "respostas": [
+       "CAMICASES",
+       "SASHIMIS",
+       "HARAQUIRIS",
+       "SUMÔS"
+     ],
+     "certa": "CAMICASES"
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Em qual espécie o macho choca os ovos e a fêmea procura alimento?",
+     "respostas": [
+       "ANDORINHA",
+       "PATO SELVAGEM",
+       "PINGÜIM",
+       "MARRECO"
+     ],
+     "certa": ""
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Em qual país está localizado o “Muro das lamentações?",
+     "respostas": [
+       "ALEMANHA",
+       "BRASIL",
+       "VENEZUELA",
+       "ISRAEL"
+     ],
+     "certa": "ISRAEL"
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Qual desses países não fica na Ásia?",
+     "respostas": [
+       "PAQUISTÃO",
+       "JAPÃO",
+       "TAILÂNDIA",
+       "EGITO"
+     ],
+     "certa": "EGITO"
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Qual desses astros de filmes de ação é belga?",
+     "respostas": [
+       "ARNOLD SCHWARZENEGGER",
+       "SYLVESTER STALLONE",
+       "STEVEN SEAGAL",
+       "JEAN CLAUDE VAN DAMME"
+     ],
+     "certa": "JEAN CLAUDE VAN DAMME"
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Onde foi conduzida a vitória das forças aliadas na Segunda Guerra Mundial?",
+     "respostas": [
+       "CANNES",
+       "NORMANDIA",
+       "CAPRI",
+       "MARSELHA"
+     ],
+     "certa": "NORMANDIA"
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Onde nasceu Van Gogh, o grande pintor impressionista?",
+     "respostas": [
+       "POLÔNIA",
+       "FRANÇA",
+       "ITÁLIA",
+       "MARSELHA"
+     ],
+     "certa": "HOLANDA"
+   },
+   {
+     "tipo": "DIFICIL",
+     "pergunta":
+     "Qual é a primeira letra do alfabeto grego?",
+     "respostas": [
+       "DELTA",
+       "BETA",
+       "ALFA",
+       "GAMA"
+     ],
+     "certa": "ALFA"
+   }
   ]
 
 
